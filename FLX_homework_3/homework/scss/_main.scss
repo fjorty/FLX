@@ -1,0 +1,236 @@
+@mixin textTransf($color) {
+	text-decoration: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $color;
+}
+@mixin doFlex {
+	display: flex;
+	justify-content: space-between;
+}
+@mixin doBorder($n, $color) {
+	border: $n * 1px solid $color;
+}
+@mixin doHover($color1, $color2, $color3) {
+	color: darken($color1, 5%);
+	border-color: darken($color2, 5%);
+	box-shadow: 0 5px 10px 0 $color3;
+}
+@mixin doBgHover($color) {
+	background-color: darken($color, 5%);
+}
+@mixin doActive($color1, $color2, $color3) {
+	transform: translate(1px);
+	color: darken($color1, 10%);
+	border-color: darken($color2, 10%);
+	box-shadow: 0 2px 5px 0 $color3;
+}
+@mixin doBgActive($color) {
+	background-color: darken($color, 10%);
+}
+
+body {
+	margin: 0;
+	font: $bodyFont;
+	background-color: $MainBgClr;
+}
+h1, h4, h3, button, p {
+	margin: 0;
+}
+header {
+	background: $bgHeadImg no-repeat center/cover;
+	height: 100vh;
+
+	h1 {
+		@include textTransf($clrHdr);
+		margin-bottom: 30px;
+	}
+		.top-wrapper {
+		@include doFlex;
+
+		img {
+			max-width: 50%;
+			cursor: pointer;
+		}
+		nav {
+			@include doFlex;
+			align-items: flex-start;
+			max-width: 70%;
+
+			a {
+				padding: 20px 105px;
+				border-right: 2px solid $clrBrdr;
+				@include textTransf($clrHdr);
+				transition: all 0.3s ease;
+
+				&:hover {
+					@include doHover($clrHdr,$clrBrdr,$txtClr);
+				}
+				&:active {
+					@include doActive($clrHdr,$clrBrdr,$txtClr);
+				}
+				&:last-child {
+					border: none;
+				}
+			}
+		}
+	}
+
+	section {
+		position: absolute;
+		bottom: 50%;
+		text-align: center;
+		width: 100%;
+
+		.btn-top {
+			font-weight: normal;
+			padding: 15px 60px;
+			background-color: $bgBtnClr;
+			transition: all 0.3s ease;
+
+			&:hover {
+				@include doHover($clrHdr,$clrBrdr,$txtClr);
+				@include doBgHover($bgBtnClr);
+			}
+			&:active {
+				@include doActive($clrHdr,$clrBrdr,$txtClr);
+				@include doBgActive($bgBtnClr);
+			}
+		}
+		a {
+			@include textTransf($clrHdrBtn);
+		}
+	}
+}
+main {
+	max-width: 74%;
+	margin-left: auto;
+	margin-right: auto;
+	
+	.toolbar, h1, h4 {
+		text-align: right;
+	}
+	.toolbar {
+		margin: 10px 10px 20px 10px;
+
+		input {
+			padding: 10px 20px;
+			@include doBorder(1, $clrBrdr);
+			background-color: $MainBgClr;
+			&::placeholder {
+				color: $clrInpTxt;
+			}
+		}
+	}
+	.post-list {
+		h1 {
+			@include textTransf($blch1);
+		}
+	}
+	article {
+		@include doFlex;
+		background-color: $BgrClr;
+		margin-bottom: 20px;
+		padding: 10px 20px 10px 10px;
+
+		.post {
+			padding-left: 10px;
+
+			p {
+				color: $txtClr;
+			}
+			.post-description {
+				padding: 7px;
+				border-bottom: 1px solid $clrBrdr;
+				font-stretch: condensed;
+				color: $PstDscrp;
+			}
+			h3 {
+				padding-top: 5px;
+				@include textTransf($h1Clr);
+			}
+		}
+	}
+	.btn {
+		@include textTransf($whiteClr);
+		display: block;
+		margin-left: auto;
+		padding: 10px 80px;
+		border: none;
+		background-color: $bgBtnClr;
+		margin-top: 25px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+
+		&:hover {
+			@include doHover($whiteClr,$clrBrdr,$txtClr);
+			@include doBgHover($bgBtnClr);
+		}
+		&:active {
+			@include doActive($whiteClr,$clrBrdr,$txtClr);
+			@include doBgActive($bgBtnClr);
+		}
+	}
+	.about {
+		padding: 40px 20px 0 10px;
+
+		h1 {
+			@include textTransf($blch1);
+		}
+		p {
+			padding-bottom: 20px;
+			font-stretch: expanded;
+			color: $txtClr;
+		}
+		img {
+			width: 100%;
+		}
+	}
+	.contact-form {
+		padding-top: 40px;
+
+		h1 {
+			color: $txtClr;
+		}
+		.form-pib {
+			@include doFlex;
+		}
+		.form-info,
+		.form-message {
+			display: flex;
+			flex-direction: column;
+
+			label {
+				padding-top: 20px;
+				text-align: right;
+				color: blue;
+				color: $h1Clr;
+			}
+		}
+		.form-info {
+			width: 50%;
+			padding-right: 5px;
+
+			&:last-child {
+				padding-left: 5px;
+				padding-right: 0;
+			}
+		}
+		input, textarea {
+			background-color: $MainBgClr;			
+			@include doBorder(1, $clrBrdr);
+		}
+		input {			
+			height: 40px;
+		}
+		textarea {
+			height: 130px;
+		}
+		h4 {
+			@include textTransf($txtClr);
+		}
+	}
+}
+span {
+	color: $txtClr;
+}
