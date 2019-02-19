@@ -1,5 +1,5 @@
-/* Task 1 */
 function userCard(index) {
+	const minCredits = 0;
 	const card = {
 		key: index,
 		balance: 100,
@@ -21,11 +21,19 @@ function userCard(index) {
 			return card;
 		},
 		putCredits(credits) {
-			card.balance += credits;
-			historyLogsInfo('Received credits', credits, operationTime());
+			if(typeof credits === 'number' && 
+			credits > minCredits) {
+				card.balance += credits;
+				historyLogsInfo('Received credits', credits, operationTime());
+			} else {
+				console.error("You can't put this amount of credits");
+			}
 		},
 		takeCredits(credits) {
-			if(card.transactionLimit >= credits && card.balance >= credits) {
+			if(typeof credits === 'number' && 
+			credits > minCredits && 
+			card.transactionLimit >= credits && 
+			card.balance >= credits) {
 				card.balance -= credits;
 				historyLogsInfo('Withdrawal of credits', credits, operationTime());
 			} else {
@@ -33,22 +41,29 @@ function userCard(index) {
 			}
 		},
 		setTransactionLimit(credits) {
-			card.transactionLimit = credits;
-			historyLogsInfo('Transaction limit change', credits, operationTime());
+			if(typeof credits === 'number' &&
+			credits > minCredits) {
+				card.transactionLimit = credits;
+				historyLogsInfo('Transaction limit change', credits, operationTime());
+			} else {
+				console.error("You can't set this transaction limit!");
+			}
 		},
-		transferCredits(credits, index) {
+		transferCredits(credits, cardNumber) {
 			const tax = 0.005;
 			let creditsPlusTax = credits + credits * tax;
-			if(card.transactionLimit >= creditsPlusTax && card.balance >= creditsPlusTax) {
+			if(typeof credits === 'number' && 
+			credits > minCredits && 
+			card.transactionLimit >= creditsPlusTax 
+			&& card.balance >= creditsPlusTax) {
 				this.takeCredits(creditsPlusTax);
-				index.putCredits(credits);
+				cardNumber.putCredits(credits);
 			} else {
 				console.error("You can't take credits from the card!");
 			}
 		}
 	}
 }
-/* Task 2 */
 class UserAccount {
 	constructor(name) {
 		this.name = name;
@@ -64,6 +79,12 @@ class UserAccount {
 		}
 	}
 	getCardByKey(index) {
-		return this.cards[index - 1];
+		let minIndex = 0;
+		let maxIndex = 3;
+		if(index > minIndex && index <= maxIndex) {
+			return this.cards[index - 1];
+		} else {
+			console.error("You can't use more than three cards!");
+		}
 	}
 }
