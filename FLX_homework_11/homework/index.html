@@ -7,29 +7,32 @@
 		<link rel="stylesheet" href="./assets/styles.css">
 	</head>
 	<body>
-		<div id="root" class="main-wrapper">
+		<div class="main-wrapper">
 			<header class="header">
 				<p class="heading">TODO Cat List</p>
+				<p class="notification-text">Maximum item per list are created</p>
 			</header>
 			<main class="main">
-				<form action="action" class="action">
+				<form class="action">
 					<div class="action-input">
-						<input type="text" id="add-text" name="input-text" class="input-text" placeholder="Add New Action" autocomplete="off" required>
+						<input type="text" id="add-text" name="input-text" 
+						class="input-text" placeholder="Add New Action" 
+						autocomplete="off" onkeyup="checkInput()">
 					</div>
-					<button type="submit" class="btn action-btn">
+					<button id="submit-btn" type="submit" class="btn action-btn" disabled>
 						<i class="material-icons">add_box</i>
 					</button>
 				</form>
-				<div class="main-content">
-					<div class="content-item">
-						<button type="submit" class="btn action-btn">
-							<i class="material-icons">check_box_outline_blank</i> <!-- check_box -->
+				<div id="root" class="main-content">
+					<!-- <div class="content-item" draggable="true">
+						<button type="button" class="btn action-btn checkbox-btn">
+							<i class="material-icons checkbox-icon">check_box_outline_blank</i>
 						</button>
 						<p class="content-text">Lorem ipsum dolor sit amet</p>
-						<button type="submit" class="btn action-btn">
+						<button type="button" class="btn action-btn delete-btn">
 							<i class="material-icons">delete</i>
 						</button>
-					</div>
+					</div> -->
 				</div>
 			</main>
 			<footer class="footer">
