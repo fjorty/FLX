@@ -4,8 +4,8 @@
 	margin: 0;
 }
 body {
-	width: 450px;
-	margin: 50px auto;
+	max-width: 550px;
+	margin: 20px auto;
 	font: normal 300 15px/24px sans-serif;
 }
 .main-wrapper {
@@ -16,10 +16,12 @@ body {
 	padding: 10px;
 }
 .heading {
-	font-size: 20px;
+	padding-top: 10px;
+	font-size: 30px;
 	text-align: center;
 }
 .notification-text {
+	margin-top: 10px;
 	border-radius: 20px;
 	font-size: 12px;
 	text-align: center;
@@ -28,7 +30,8 @@ body {
 	display: none;
 }
 .main {
-	margin: 0 20px 140px 0;
+	min-height: 450px;
+	margin: 0 20px 20px 0;
 }
 .action {	
 	padding: 0 0 10px 10px;
@@ -44,6 +47,7 @@ body {
 }
 .input-text {
 	width: 100%;
+	font-size: 17px;
 	padding: 0 5px;
 	border: 1px solid black;
 }
@@ -57,6 +61,7 @@ body {
 	background-color: white;
 }
 .material-icons {
+	font-size: 30px;
 	cursor: pointer;	
 }
 .main-content {
@@ -80,6 +85,6 @@ body {
 	justify-content: center;
 }
 .cat-image {
-	width: 50px;
-	height: 50px;
+	width: 70px;
+	height: 70px;
 }

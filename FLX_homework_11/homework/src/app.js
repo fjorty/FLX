@@ -51,55 +51,57 @@ function addElement(evt) {
 	function removeElement() {
 		return rootNode.removeChild(this.parentElement);
 	}
-	//DRAG & DROP
+//DRAG & DROP
+	//Announce variables for drag & drop functions
 	let dragSrcEl = null;
-	function handleDragStart(e) {
-		dragSrcEl = this;
-		e.dataTransfer.effectAllowed = 'move';
-		e.dataTransfer.setData('text/html', this.outerHTML);
-		this.classList.add('dragElem');
-	}
-	function handleDragOver(e) {
-		if (e.preventDefault) {
-			e.preventDefault();
+	let dropPosEl = null;
+	//Drag & drop functions
+	function dragTarget(el) {
+		let target = el.target;
+		if (target.hasAttribute('draggable')) {
+			return target;
 		}
-		this.classList.add('over');
-		e.dataTransfer.dropEffect = 'move';
-		return false;
 	}
-	function handleDragEnter(e) {
-		// this / e.target is the current hover target.
-	}
-	function handleDragLeave(e) {
-		this.classList.remove('over');
-	}
-	function handleDrop(e) {
-		if (e.stopPropagation) {
-			e.stopPropagation();
+	function handleDragStart(el) {
+		dragSrcEl = dragTarget(el);
+		if(!dragSrcEl) {
+			return;
 		}
-		if (dragSrcEl !== this) {
-			this.parentNode.removeChild(dragSrcEl);
-			let dropHTML = e.dataTransfer.getData('text/html');
-			this.insertAdjacentHTML('beforebegin',dropHTML);
-			let dropElem = this.previousSibling;
-			addDnDHandlers(dropElem);
+	}
+	function handleDragOver(el) {
+		el.preventDefault();
+		let dropPosEl = dragTarget(el);
+		if(!dropPosEl) {
+			return;
 		}
-		this.classList.remove('over');
-		return false;
 	}
-	function handleDragEnd(e) {
-		this.classList.remove('over');
+	function handleDragLeave(el) {
+		let dropPosEl = dragTarget(el);
+		if(!dropPosEl) {
+			return;
+		}
 	}
-	function addDnDHandlers(elem) {
-		elem.addEventListener('dragstart', handleDragStart, false);
-		elem.addEventListener('dragenter', handleDragEnter, false)
-		elem.addEventListener('dragover', handleDragOver, false);
-		elem.addEventListener('dragleave', handleDragLeave, false);
-		elem.addEventListener('drop', handleDrop, false);
-		elem.addEventListener('dragend', handleDragEnd, false);
+	function handleDrop(el) {
+		dropPosEl = dragTarget(el);
+		if(!dropPosEl) {
+			return;
+		}
+		el.preventDefault();
+		let rect = dropPosEl.getBoundingClientRect();
+		let num = 2;
+		let middle = rect.top + (rect.bottom - rect.top) / num;
+		let dropPosElEnd = middle <= el.clientY ? dropPosEl.nextSibling : dropPosEl;
+		rootNode.insertBefore(dragSrcEl, dropPosElEnd);
 	}
-	let dragItems = document.querySelectorAll('.content-item');
-	[].forEach.call(dragItems, addDnDHandlers);
+	function handleDragEnd() {
+		//dragEnd for element
+	}
+	//Add event listeners for draggable elements
+	rootNode.addEventListener('dragstart', handleDragStart, false);
+	rootNode.addEventListener('dragover', handleDragOver, false);
+	rootNode.addEventListener('dragleave', handleDragLeave, false);
+	rootNode.addEventListener('drop', handleDrop, false);
+	rootNode.addEventListener('dragend', handleDragEnd, false);
 }
 //Check that number of element will be less than 10
 document.onclick = function(event) {
