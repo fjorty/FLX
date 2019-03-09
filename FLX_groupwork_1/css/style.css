@@ -1,0 +1,350 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 1000px;
+  margin: 0 auto;
+  background-color: #e8edf0;
+}
+.main-wrapper {
+  position: relative;
+}
+.phone {
+  position: absolute;
+  border-radius: 25px;
+  display: block;
+  transform: rotate(-30deg) skew(30deg, 0deg);
+  transition: all 1s ease;
+  box-shadow: -10px 10px 70px -10px #555555;
+  cursor: pointer;
+}
+.phone:hover {
+  box-shadow: -90px 90px 50px -10px #888888;
+}
+.phone:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90px;
+  height: 400px;
+  content: '';
+  transition: all 1s ease;
+  transform: translate(-40px, 4px) skewY(-45deg);
+}
+.phone:hover:before {
+  left: -50px;
+  top: 30px;
+}
+.phone-first {
+  z-index: 3;
+  left: 200px;
+  top: 285px;
+}
+.phone-first:hover {
+  top: 220px;
+}
+.phone-second {
+  z-index: 2;
+  left: 600px;
+  top: 285px;
+}
+.phone-second:hover {
+  top: 225px;
+}
+.phone-third {
+  left: 600px;
+  top: 50px;
+}
+.phone-third:hover {
+  top: -10px;
+}
+.phone-fourth {
+  left: 200px;
+  top: 50px;
+}
+.phone-fourth:hover {
+  top: -10px;
+}
+.top-side, .bottom-side {
+  display: block;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-side {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.phone-top-speaker {
+  width: 30px;
+  height: 3px;
+  border-radius: 40px;
+}
+.middle-side:before {
+  content: '';
+  left: 0;
+  top: 40px;
+  width: 8px;
+  height: 300px;
+  background: #d9d9d9;
+  position: absolute;
+  transform: translate(-8px, 4px) skewY(-45deg);
+}
+.phone-display {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 300px;
+  background-color: #f2f2f2;
+  overflow-y: hidden;
+}
+.phone-display:hover {
+  overflow-y: auto;
+}
+.display-heading-one {
+  padding: 5px 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  font-weight: 100;
+}
+.display-paragraph {
+  padding: 0 30px;
+  font-family: 'Rubik', sans-serif;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+}
+.display-heading-two,
+.span-first {
+  font-family: 'Rubik', sans-serif;
+  line-height: 0.9em;
+  font-size: 28px;
+}
+.display-heading-two {
+  padding: 5px 30px 25px 30px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.span-first {
+  font-weight: 300;
+}
+.coloured {
+  background: linear-gradient(to right, #ec8f49 0%, #f2467d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.display-heading-two:before {
+  position: absolute;
+  left: 30px;
+  bottom: 110px;
+  content: '';
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, #ec8f49 0%, #f2467d 100%);
+}
+.logo-icon {
+  padding: 10px 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.icon-image {
+  width: 15px;
+  height: 20px;
+}
+.logo-paragraph {
+  padding: 0 5px;
+  font-size: 10px;
+  text-transform: none;
+  align-self: flex-end;
+}
+.bottom-side {
+  position: relative;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.bottom-side:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 210px;
+  height: 60px;
+  content: '';
+  transition: bottom 0.3s ease;
+  transform: translate(10px, -1px) skewX(-45deg)
+}
+.bottom-side:hover:before {
+  left: -45px;
+  top: 40px;
+}
+.home-button {
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}
+.phone-bottom-left-speaker,
+.phone-bottom-right-speaker {
+  display: flex;
+  position: absolute;
+}
+.phone-bottom-left-speaker {
+  left: 35px;
+  bottom: -5px;
+}
+.phone-bottom-right-speaker {
+  bottom: -5px;
+  right: 35px
+}
+.speaker-hole {
+  height: 3px;
+  width: 4px;
+  border-radius: 4px;
+  margin: 0 0.04em;
+  transform: skewY(-25deg)
+}
+.phone-charge {
+  position: absolute;
+  bottom: -6px;
+  width: 20px;
+  height: 4px;
+  border-radius: 15px;
+}
+.top-side-first {
+  background: linear-gradient(to right, #edb2bc 0%, #e6bcc5 100%);
+  box-shadow: 0px 0px #b87b87,
+              -2px 1px #b87b87,
+              -4px 2px #b87b87,
+              -4px 3px #b87b87,
+              -6px 4px #b87b87,
+              -8px 5px #b87b87,
+              -7px 6px #b87b87,
+              -8px 8px #b87b87;
+}
+.top-side-second {
+  background: linear-gradient(to right, #46947b 0%, #8ed4c3 100%);
+  box-shadow: 0px 0px #387a64,
+              -2px 1px #387a64,
+              -4px 2px #387a64,
+              -4px 3px #387a64,
+              -6px 4px #387a64,
+              -8px 5px #387a64,
+              -7px 6px #387a64,
+              -8px 8px #387a64;
+}
+.top-side-third {
+  background: linear-gradient(to right, #debf59 0%, #eddd82 100%);
+  box-shadow: 0px 0px #cca84e,
+              -2px 1px #cca84e,
+              -4px 2px #cca84e,
+              -4px 3px #cca84e,
+              -6px 4px #cca84e,
+              -8px 5px #cca84e,
+              -7px 6px #cca84e,
+              -8px 8px #cca84e;
+}
+.top-side-fourth {
+  background: linear-gradient(to right, #60B3B5 0%, #A2DEDD 100%);
+  box-shadow: 0px 0px #519899,
+              -2px 1px #519899,
+              -4px 2px #519899,
+              -4px 3px #519899,
+              -6px 4px #519899,
+              -8px 5px #519899,
+              -7px 6px #519899,
+              -8px 8px #519899;
+}
+.speaker-first {
+  background-color: #e3889f;
+}
+.speaker-second {
+  background-color: #228769;
+}
+.speaker-third {
+  background-color: #e6bb30;
+}
+.speaker-fourth {
+  background-color: #36b3b3;
+}
+.speaker-hole-first {
+  background: linear-gradient(200deg, #e3c1cc 0%, #b3949c 100%);
+}
+.speaker-hole-second {
+  background: linear-gradient(200deg, #51c29a 0%, #32a681 100%);
+}
+.speaker-hole-third {
+  background: linear-gradient(200deg, #e6ce65 0%, #bdad35 100%);
+}
+.speaker-hole-fourth {
+  background: linear-gradient(200deg, #5ccacc 0%, #2aa7b0 100%);
+}
+.bottom-side-first {
+  background-color: #edd1d7;
+  box-shadow: -1px 0px #c7b3b3, -1px 1px #d9bdc3,
+              -2px 1px #c7b3b3, -2px 2px #d9bdc3,
+              -3px 2px #c7b3b3, -3px 3px #d9bdc3,
+              -4px 3px #c7b3b3, -4px 4px #d9bdc3,
+              -5px 4px #c7b3b3, -5px 5px #d9bdc3,
+              -6px 5px #c7b3b3, -6px 6px #d9bdc3,
+              -7px 6px #c7b3b3, -7px 7px #d9bdc3,
+              -8px 7px #c7b3b3, -8px 8px #d9bdc3;
+}
+.bottom-side-second {
+  background-color: #8edecf;
+  box-shadow: -1px 0px #6dbdb1, -1px 1px #73c7ba,
+              -2px 1px #6dbdb1, -2px 2px #73c7ba,
+              -3px 2px #6dbdb1, -3px 3px #73c7ba,
+              -4px 3px #6dbdb1, -4px 4px #73c7ba,
+              -5px 4px #6dbdb1, -5px 5px #73c7ba,
+              -6px 5px #6dbdb1, -6px 6px #73c7ba,
+              -7px 6px #6dbdb1, -7px 7px #73c7ba,
+              -8px 7px #6dbdb1, -8px 8px #73c7ba;
+}
+.bottom-side-third {
+  background-color: #ede28e;
+  box-shadow: -1px 0px #d1be69, -1px 1px #d6c86b,
+              -2px 1px #d1be69, -2px 2px #d6c86b,
+              -3px 2px #d1be69, -3px 3px #d6c86b,
+              -4px 3px #d1be69, -4px 4px #d6c86b,
+              -5px 4px #d1be69, -5px 5px #d6c86b,
+              -6px 5px #d1be69, -6px 6px #d6c86b,
+              -7px 6px #d1be69, -7px 7px #d6c86b,
+              -8px 7px #d1be69, -8px 8px #d6c86b;
+}
+.bottom-side-fourth {
+  background-color: #a4ddde;
+  box-shadow: -1px 0px #73bbbd, -1px 1px #7ecfcc,
+              -2px 1px #73bbbd, -2px 2px #7ecfcc,
+              -3px 2px #73bbbd, -3px 3px #7ecfcc,
+              -4px 3px #73bbbd, -4px 4px #7ecfcc,
+              -5px 4px #73bbbd, -5px 5px #7ecfcc,
+              -6px 5px #73bbbd, -6px 6px #7ecfcc,
+              -7px 6px #73bbbd, -7px 7px #7ecfcc,
+              -8px 7px #73bbbd, -8px 8px #7ecfcc;
+}
+.home-button-first {
+  background-color: #ebbecd;
+}
+.home-button-second {
+  background-color: #55d9c5;
+}
+.home-button-third {
+  background-color: #ebd952;
+}
+.home-button-fourth {
+  background-color: #60d9db;
+}
+.phone-charge-first {
+  background: linear-gradient(190deg, #c2a5ac 0%, #b3949c 100%);
+}
+.phone-charge-second {
+  background: linear-gradient(190deg, #51c29a 0%, #32a681 100%);
+}
+.phone-charge-third {
+  background: linear-gradient(190deg, #d4b959 0%, #bdad35 100%);
+}
+.phone-charge-fourth {
+  background: linear-gradient(190deg, #5ccacc 0%, #2aa7b0 100%);
+}
